@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IP Checker</title>
+</head>
+<body>
+  <h1>IP Checker</h1>
+  <button onclick="checkIP()">Cek IP Saya</button>
+  <p id="result"></p>
+  <p id="ip"></p>
+
+  <script>
+    async function checkIP() {
+      try {
+        const response = await fetch('https://obscure-computing-machine-5gxjqwrx7v9v3pgjg-3000.app.github.dev/check-ip');
+        const result = await response.json();
+        document.getElementById('result').innerText = result.message;
+        document.getElementById('ip').innerText = "IP Anda: " + result.ip;
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+  </script>
+</body>
+</html>
